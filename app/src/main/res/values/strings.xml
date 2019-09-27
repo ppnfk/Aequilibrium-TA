@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Transformer</string>
+    <string name="action_fight">Go to war</string>
+</resources>

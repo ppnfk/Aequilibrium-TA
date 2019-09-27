@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph.xml"
+            tools:ignore="UnusedNavigation" app:startDestination="@id/transformerListFragment">
+
+    <fragment android:id="@+id/transformerListFragment"
+              android:name="com.vincentcho.transformer.TransformerListFragment"
+              android:label="TransformerListFragment">
+        <action android:id="@+id/action_transformerListFragment_to_transformerEditFragment"
+                app:destination="@id/transformerEditFragment"
+                />
+        <action android:id="@+id/action_transformerListFragment_to_transformerNewFragment"
+                app:destination="@id/transformerNewFragment"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"/>
+    </fragment>
+
+    <fragment android:id="@+id/transformerEditFragment"
+              android:name="com.vincentcho.transformer.TransformerEditFragment"
+              android:label="TransformerEditFragment">
+    </fragment>
+
+    <fragment android:id="@+id/transformerNewFragment"
+              android:name="com.vincentcho.transformer.TransformerNewFragment"
+              android:label="TransformerNewFragment">
+    </fragment>
+
+</navigation>

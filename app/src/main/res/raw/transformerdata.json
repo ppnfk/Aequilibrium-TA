@@ -1,0 +1,18 @@
+{
+  "transformers": [
+    {
+      "id": "-LLbrUN3dQkeejt9vTZc",
+      "name": "Megatron",
+      "strength": 10,
+      "intelligence": 10,
+      "speed": 4,
+      "endurance": 8,
+      "rank": 10,
+      "courage": 9,
+      "firepower": 10,
+      "skill": 9,
+      "team": "D",
+      "team_icon": "https://tfwiki.net/mediawiki/images2/archive/8/8d/20110410191659%21Symbol_decept_reg.png"
+    }
+  ]
+}

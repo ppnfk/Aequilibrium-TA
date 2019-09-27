@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" >
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView
+                android:id="@+id/contentFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical">
+            <EditText
+                    android:id="@+id/editName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Robot Name"
+                    android:inputType="textPersonName"
+                    android:text=""/>
+            <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/radioGroup">
+                <RadioButton android:id="@+id/radio_autobot"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="Autobot"
+                             android:layout_marginStart="10dp"
+                             android:layout_marginTop="10dp"
+                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                <RadioButton android:id="@+id/radio_deception"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:text="Decepticon"
+                             android:layout_marginStart="10dp"
+                             android:layout_marginTop="10dp"
+                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                             android:layout_marginBottom="10dp"/>
+            </RadioGroup>
+            <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:id="@+id/transformer_attribute_list">
+
+            </androidx.recyclerview.widget.RecyclerView>
+                    <Button
+                        android:id="@+id/button_submit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/colorAccent"
+                        android:text="Save"
+                        android:layout_marginBottom="20dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimary" />
+                    <Button
+                            android:id="@+id/button_delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/colorAccent"
+                            android:text="Delete"
+                            android:layout_marginBottom="20dp"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimary"
+                            android:visibility="gone"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>
