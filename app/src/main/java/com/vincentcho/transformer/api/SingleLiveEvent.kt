@@ -41,7 +41,6 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     }
 
     companion object {
-
         private val TAG = "SingleLiveEvent"
     }
 

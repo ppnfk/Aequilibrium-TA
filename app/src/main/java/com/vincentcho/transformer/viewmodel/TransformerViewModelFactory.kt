@@ -2,9 +2,7 @@ package com.vincentcho.transformer.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.vincentcho.transformer.api.TransformerService
 import com.vincentcho.transformer.repo.TransformerRepo
-
 
 class TransformerViewModelFactory(private val transformerRepo: TransformerRepo) :
     ViewModelProvider.Factory {

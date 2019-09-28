@@ -2,13 +2,10 @@ package com.vincentcho.transformer.repo
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.BitmapFactory
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.vincentcho.transformer.api.TransformerService
 import com.vincentcho.transformer.vo.Transformer
-import java.io.*
-import java.util.*
 import com.google.gson.Gson
 import com.vincentcho.transformer.api.TransformerResponse
 import retrofit2.Call
@@ -19,11 +16,9 @@ import com.vincentcho.transformer.api.SingleLiveEvent
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
-import java.net.URL
 
 class TransformerRepo(val apiService: TransformerService, val context: Context) {
 
@@ -115,7 +110,6 @@ class TransformerRepo(val apiService: TransformerService, val context: Context) 
         })
     }
 
-
     fun createTransformer(transformer: Transformer){
         val body = transformer.partialJson().toRequestBody(
             "application/json; charset=utf-8".toMediaTypeOrNull()
@@ -153,37 +147,6 @@ class TransformerRepo(val apiService: TransformerService, val context: Context) 
         return true
     }
 
-    fun initRepo() {
-        if (isInit == true) {
-            return
-        }
-        _transformerList = mutableListOf<Transformer>()
-
-        var dir = context.cacheDir
-        var target = File(dir, TransformerRepo.TRANSFORMER_CACHE_FILENAME)
-        lateinit var jsonString: String
-        if (!target.exists()) {
-            val inputStream = this.javaClass.classLoader!!.getResourceAsStream("res/raw/transformerdata.json")
-            jsonString = Scanner(inputStream).useDelimiter("\\A").next()
-
-            val outputStream = ObjectOutputStream(FileOutputStream(target))
-            outputStream.writeObject(jsonString)
-            outputStream.flush()
-            outputStream.close()
-
-        } else {
-            val inputStream = ObjectInputStream(FileInputStream(target))
-            @Suppress("UNCHECKED_CAST")
-            jsonString = inputStream.readObject() as String
-            inputStream.close()
-        }
-
-        val transformerResponse = gson.fromJson(jsonString, TransformerResponse::class.java)
-
-        _transformerList = transformerResponse.transformer.toMutableList()
-        _transformers.value = _transformerList
-    }
-
     private fun getPreferences(): SharedPreferences {
         return context.getSharedPreferences(TransformerRepo.PREF_NAME, Context.MODE_PRIVATE)
     }
@@ -202,14 +165,11 @@ class TransformerRepo(val apiService: TransformerService, val context: Context) 
         _transformers.value = _transformerList
     }
 
-
-
     fun saveLocalListToDb() {
         if (_transformerList.count() > 0) {
             var tlist = gson.toJson(_transformerList)
             getPreferences().edit().putString(TransformerRepo.KEY_JSON_TRANSFORMER_LIST, tlist).apply()
         }
-
         getPreferences().edit().putString(TransformerRepo.KEY_JSON_ALLSPARK,allspark).apply()
     }
 

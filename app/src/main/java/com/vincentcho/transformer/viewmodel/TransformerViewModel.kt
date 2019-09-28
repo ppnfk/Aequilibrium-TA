@@ -1,17 +1,11 @@
 package com.vincentcho.transformer.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.vincentcho.transformer.repo.TransformerRepo
 import androidx.lifecycle.LiveData
-import androidx.annotation.NonNull
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.os.Handler
 import com.vincentcho.transformer.api.SingleLiveEvent
 import com.vincentcho.transformer.vo.Transformer
-import kotlinx.coroutines.awaitAll
 import java.lang.Math.min
-
 
 class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
 
@@ -174,7 +168,6 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
         }
         team.add(t)
     }
-
 
     fun getAllTransformers(): LiveData<List<Transformer>> {
         return transformerRepo.loadTransformers()

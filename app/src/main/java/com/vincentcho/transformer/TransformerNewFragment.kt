@@ -6,30 +6,23 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
-import com.ramotion.fluidslider.FluidSlider
-import com.vincentcho.transformer.adapter.TransformerDataAdapter
 import com.vincentcho.transformer.adapter.TransformerEditViewAdapter
 import com.vincentcho.transformer.api.RestClient
-import com.vincentcho.transformer.api.TransformerResponse
 import com.vincentcho.transformer.api.TransformerService
 import com.vincentcho.transformer.databinding.FragmentTransformerEditBinding
-import com.vincentcho.transformer.databinding.FragmentTransformerListBinding
 import com.vincentcho.transformer.repo.TransformerRepo
 import com.vincentcho.transformer.viewmodel.TransformerViewModel
 import com.vincentcho.transformer.viewmodel.TransformerViewModelFactory
 import com.vincentcho.transformer.vo.Transformer
 import kotlinx.android.synthetic.main.fragment_transformer_edit.*
-import kotlinx.android.synthetic.main.fragment_transformer_list.*
 
 class TransformerNewFragment: Fragment() , RadioGroup.OnCheckedChangeListener {
 
@@ -74,10 +67,11 @@ class TransformerNewFragment: Fragment() , RadioGroup.OnCheckedChangeListener {
         } else {
             newTransformer = gson.fromJson(transformerJson, Transformer::class.java)
             editName.setText(newTransformer.name)
-            when (newTransformer.team) {
-                "A" -> {radio_autobot.isChecked = true}
-                "D" -> {radio_deception.isChecked = true}
-            }
+        }
+
+        when (newTransformer.team) {
+            "A" -> {radio_autobot.isChecked = true}
+            "D" -> {radio_deception.isChecked = true}
         }
 
         var linearLayoutManager = LinearLayoutManager(activity)
@@ -105,7 +99,9 @@ class TransformerNewFragment: Fragment() , RadioGroup.OnCheckedChangeListener {
         }
 
         button_submit.setOnClickListener {
-            if (editType==true) {
+            if (editName.text.isEmpty()){
+                Snackbar.make(view, "Please give this Transformer a name.", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+            } else if (editType==true) {
                 transformerViewModel.updateTransformer(newTransformer)
             }
             else {

@@ -1,7 +1,6 @@
 package com.vincentcho.transformer.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vincentcho.transformer.R
@@ -10,7 +9,6 @@ import androidx.databinding.DataBindingUtil.inflate
 import com.bumptech.glide.Glide
 import com.vincentcho.transformer.viewmodel.TransformerViewModel
 import com.vincentcho.transformer.vo.Transformer
-import kotlinx.android.synthetic.main.item_transformer.view.*
 
 class TransformerDataAdapter(private val transformerViewModel: TransformerViewModel) : RecyclerView.Adapter<TransformerDataAdapter.TransformerViewHolder>() {
 
@@ -51,7 +49,6 @@ class TransformerDataAdapter(private val transformerViewModel: TransformerViewMo
                 .load(transformer.teamIcon)
                 .into(binding.ivPic)
             itemView.setOnClickListener { transformerViewModel.onItemClicked(transformer) }
-
         }
     }
 }

@@ -3,7 +3,7 @@ package com.vincentcho.transformer.vo
 import com.google.gson.annotations.SerializedName
 
 data class Transformer(@SerializedName("id")var id: String = "",
-                       @SerializedName("team")var team: String = "",
+                       @SerializedName("team")var team: String = "A",
                        @SerializedName("name")var name: String = "",
                        @SerializedName("strength")var strength: Int = 1,
                        @SerializedName("intelligence")var intelligence: Int = 1,

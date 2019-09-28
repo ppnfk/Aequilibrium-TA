@@ -25,9 +25,6 @@ import com.vincentcho.transformer.viewmodel.TransformerViewModelFactory
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
 
-
-
-
 class TransformerListFragment: Fragment(){
     private lateinit var transformerViewModel: TransformerViewModel
     private var transformerDataAdapter: TransformerDataAdapter? = null
@@ -90,6 +87,5 @@ class TransformerListFragment: Fragment(){
                 }
             }
         })
-
     }
 }

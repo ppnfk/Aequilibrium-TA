@@ -1,17 +1,10 @@
 package com.vincentcho.transformer.api
 
-import android.util.Log
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonPrimitive
-import com.vincentcho.transformer.R
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
-
-
 
 class RestClient(baseUrl: String) {
     private val mClient: Retrofit

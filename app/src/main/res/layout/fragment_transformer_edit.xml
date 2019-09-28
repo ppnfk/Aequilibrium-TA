@@ -57,7 +57,7 @@
                         android:text="Save"
                         android:layout_marginBottom="20dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/colorPrimary" />
+                        android:textColor="#ffffff" />
                     <Button
                             android:id="@+id/button_delete"
                             android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
                             android:text="Delete"
                             android:layout_marginBottom="20dp"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="#ffffff"
                             android:visibility="gone"/>
 
             </LinearLayout>
