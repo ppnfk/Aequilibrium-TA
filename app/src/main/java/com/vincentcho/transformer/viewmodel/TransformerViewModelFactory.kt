@@ -4,6 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.vincentcho.transformer.repo.TransformerRepo
 
+/**
+ * TransformerViewModelFactory
+ *
+ * viewModelFactory for TransformerViewModel in order to pass a transformerRepo into it.
+ *
+ * @property transformerRepo a repository stores transformer data which is got from server;
+ * @constructor Creates an new TransformerViewModelFactory instance
+ */
 class TransformerViewModelFactory(private val transformerRepo: TransformerRepo) :
     ViewModelProvider.Factory {
 

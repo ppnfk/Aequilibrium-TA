@@ -5,7 +5,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'org.jetbrains.dokka-android'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -15,6 +15,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/javadoc"
     }
     dataBinding {
         enabled = true

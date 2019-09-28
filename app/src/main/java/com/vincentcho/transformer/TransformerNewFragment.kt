@@ -24,6 +24,12 @@ import com.vincentcho.transformer.viewmodel.TransformerViewModelFactory
 import com.vincentcho.transformer.vo.Transformer
 import kotlinx.android.synthetic.main.fragment_transformer_edit.*
 
+/**
+ * TransformerNewFragment
+ *
+ * provide user interface to edit/modify your transformer's name, attributes and team.
+ *
+ */
 class TransformerNewFragment: Fragment() , RadioGroup.OnCheckedChangeListener {
 
     private lateinit var transformerEditViewAdapter: TransformerEditViewAdapter

@@ -6,6 +6,14 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * RestClient
+ *
+ * This class help create a Retrofit instance and handle some prerequisites.
+ *
+ * @param baseUrl url of the rest server
+ * @constructor Creates an new Retrofit instance
+ */
 class RestClient(baseUrl: String) {
     private val mClient: Retrofit
 
@@ -36,7 +44,13 @@ class RestClient(baseUrl: String) {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }
-
+    /**
+     *
+     * create a Retrofit Instance of <T>
+     *
+     * @param apiInterfaceClass interface class of the retrofit service api
+     * @return a retrofit instance of class apiInterfaceClass
+     */
     fun <T> create(apiInterfaceClass: Class<T>): T {
         return mClient.create(apiInterfaceClass)
     }

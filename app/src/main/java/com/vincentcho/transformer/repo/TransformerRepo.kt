@@ -20,17 +20,25 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
 
+/**
+ * TransformerRepo
+ *
+ * A repository stores transformer data which is got from server;
+ * it contains local data save in SharedPreferences and internet data fetched from Transformer server
+ *
+ * @property apiService a service endpoint which talks to transformer server (Retrofit instance)
+ * @property context for using getSharedPreferences.
+ * @constructor Creates an new TransformerRepo instance
+ */
 class TransformerRepo(val apiService: TransformerService, val context: Context) {
 
     companion object {
         private const val PREF_NAME = "transformer_cache"
         private const val KEY_JSON_TRANSFORMER_LIST = "transformer_list"
         private const val KEY_JSON_ALLSPARK = "transformer_allspark"
-
-        private const val TRANSFORMER_CACHE_FILENAME = "transformerRepo.json"
     }
+
     private val defaultScope = CoroutineScope(Dispatchers.Default)
-    private var isInit = false
     private var allspark: String = ""
     private var gson: Gson
     var actionResult = SingleLiveEvent<ActionResult>()
@@ -59,7 +67,7 @@ class TransformerRepo(val apiService: TransformerService, val context: Context) 
             override fun onResponse(call: Call<TransformerResponse>, response: Response<TransformerResponse>) {
                 if (response.isSuccessful) {
                     val tr = response.body() as TransformerResponse
-                    _transformerList = tr.transformer.toMutableList()
+                    _transformerList = tr.transformerlist.toMutableList()
                     _transformers.value = _transformerList
                 } else {
                     actionResult.value = ActionResult(false, response.message())
@@ -89,7 +97,7 @@ class TransformerRepo(val apiService: TransformerService, val context: Context) 
     }
 
     fun updateTransformer(transformer: Transformer) {
-        val body = transformer.partialJsonForUpdate().toRequestBody(
+        val body = transformer.attributesJsonWithId().toRequestBody(
             "application/json; charset=utf-8".toMediaTypeOrNull()
         )
         val call = apiService.updateTransformers("Bearer $allspark", body)
@@ -111,7 +119,7 @@ class TransformerRepo(val apiService: TransformerService, val context: Context) 
     }
 
     fun createTransformer(transformer: Transformer){
-        val body = transformer.partialJson().toRequestBody(
+        val body = transformer.attributesJson().toRequestBody(
             "application/json; charset=utf-8".toMediaTypeOrNull()
         )
         val call = apiService.createTransformers("Bearer $allspark", body)

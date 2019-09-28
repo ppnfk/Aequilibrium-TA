@@ -25,6 +25,13 @@ import com.vincentcho.transformer.viewmodel.TransformerViewModelFactory
 import android.content.DialogInterface
 import androidx.appcompat.app.AlertDialog
 
+/**
+ * TransformerListFragment
+ *
+ * the entry Fragment of this transformer games which show the transformers user has created
+ * and provide "Create" and "Go for War" button to user to interact.
+ *
+ */
 class TransformerListFragment: Fragment(){
     private lateinit var transformerViewModel: TransformerViewModel
     private var transformerDataAdapter: TransformerDataAdapter? = null

@@ -11,6 +11,15 @@ import com.vincentcho.transformer.viewmodel.TransformerViewModel
 import com.vincentcho.transformer.vo.Transformer
 import kotlinx.android.synthetic.main.item_attribute.view.*
 
+/**
+ * TransformerEditViewAdapter
+ *
+ * This class handles the recycler view of the transformer attributes seekbar of edit/new transformer screen
+ *
+ * @property context for inflatering view only
+ * @property tViewModel this adapter keeps a viewmodel passing from the fragment as a data model to use
+ * @constructor Creates an new adapter to handle RecyclerView of transformer's attributes
+ */
 class TransformerEditViewAdapter(val context: Context, private val tViewModel: TransformerViewModel) : RecyclerView.Adapter<TransformerEditViewAdapter.ViewHolder>() {
 
     lateinit var _transformer: Transformer

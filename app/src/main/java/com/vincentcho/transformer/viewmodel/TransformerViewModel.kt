@@ -7,10 +7,17 @@ import com.vincentcho.transformer.api.SingleLiveEvent
 import com.vincentcho.transformer.vo.Transformer
 import java.lang.Math.min
 
+/**
+ * TransformerViewModel
+ *
+ * viewModel provides interfaces to access transformer repository and game logics
+ *
+ * @property transformerRepo a repository stores transformer data which is got from server;
+ * @constructor Creates an new TransformerViewModel instance
+ */
 class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
 
     private lateinit var newTransformer: Transformer
-    private var token = ""
 
     init {
         transformerRepo.connect()

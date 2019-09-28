@@ -12,6 +12,12 @@ import retrofit2.http.DELETE
 import retrofit2.http.Body
 import retrofit2.http.Path
 
+/**
+* TransformerService
+*
+* define interfaces of transformer server
+*
+*/
 interface TransformerService {
 
     @GET("allspark")

@@ -10,6 +10,14 @@ import com.bumptech.glide.Glide
 import com.vincentcho.transformer.viewmodel.TransformerViewModel
 import com.vincentcho.transformer.vo.Transformer
 
+/**
+ * TransformerDataAdapter
+ *
+ * This class handles the recycler view which display the transformer list.
+ *
+ * @property transformerViewModel this adapter keeps a viewmodel passing from the fragment as a data model to use
+ * @constructor Creates an new adapter to handle RecyclerView of transformers
+ */
 class TransformerDataAdapter(private val transformerViewModel: TransformerViewModel) : RecyclerView.Adapter<TransformerDataAdapter.TransformerViewHolder>() {
 
     var transformers: List<Transformer> = emptyList()
