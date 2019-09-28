@@ -64,18 +64,24 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
                 aWins += 1
             } else if (teamA[i].skill + 3 <= teamD[i].skill) {
                 resultteamD.add(teamD[i])
+                //deleteTransformer(teamA[i])
                 dWins += 1
             } else if (teamD[i].skill + 3 <= teamA[i].skill) {
                 resultteamA.add(teamA[i])
+                //deleteTransformer(teamD[i])
                 aWins += 1
             } else if (teamA[i].overallRating() > teamD[i].overallRating()) {
                 resultteamA.add(teamA[i])
+                //deleteTransformer(teamD[i])
                 aWins += 1
             } else if (teamA[i].overallRating() < teamD[i].overallRating()) {
                 resultteamD.add(teamD[i])
+                //deleteTransformer(teamA[i])
                 dWins += 1
             } else {
                 // both dead
+                //deleteTransformer(teamA[i])
+                //deleteTransformer(teamD[i])
             }
         }
 
