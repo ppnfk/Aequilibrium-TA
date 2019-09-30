@@ -100,13 +100,12 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
                 retString = retString + _t.name + ", "
             }
 
-            retString.trimMargin(", ")
-            retString += "\nSurvivors from team (Autobots):"
+            retString = retString.trim({ ch -> ch == ',' || ch == ' '})
+            retString += "\nSurvivors from team (Autobots): "
             for (_t in teamA) {
                 retString = retString + _t.name + ", "
             }
 
-            retString.trimMargin(", ")
         } else if (aWins > dWins){
             retString = "$battleTimes battles \nWinning team (Autobots): "
             for (_t in resultteamA) {
@@ -117,8 +116,8 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
                 retString = retString + teamA[i].name + ", "
             }
 
-            retString.trimMargin(", ")
-            retString += "\nSurvivors from the losing team (Decepticons):"
+            retString = retString.trim({ ch -> ch == ',' || ch == ' '})
+            retString += "\nSurvivors from the losing team (Decepticons): "
             for (_t in resultteamD) {
                 retString = retString + _t.name + ", "
             }
@@ -126,8 +125,6 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
             for (i in battleTimes..teamD.size-1) {
                 retString = retString + teamD[i].name + ", "
             }
-            retString.trimMargin(", ")
-
         } else if (aWins < dWins) {
             retString = "$battleTimes battles \nWinning team (Decepticons): "
             for (_t in resultteamD) {
@@ -138,8 +135,8 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
                 retString = retString + teamD[i].name + ", "
             }
 
-            retString.trimMargin(", ")
-            retString += "\nSurvivors from the losing team (Autobots):"
+            retString = retString.trim({ ch -> ch == ',' || ch == ' '})
+            retString += "\nSurvivors from the losing team (Autobots): "
             for (_t in resultteamA) {
                 retString = retString + _t.name + ", "
             }
@@ -147,7 +144,6 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
             for (i in battleTimes..teamA.size-1) {
                 retString = retString + teamA[i].name + ", "
             }
-            retString.trimMargin(", ")
         } else {
             retString = "$battleTimes battles \nSurvivors from team (Decepticons): "
             for (_t in resultteamD) {
@@ -158,8 +154,8 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
                 retString = retString + teamD[i].name + ", "
             }
 
-            retString.trimMargin(", ")
-            retString += "\nSurvivors from team (Autobots):"
+            retString = retString.trim({ ch -> ch == ',' || ch == ' '})
+            retString += "\nSurvivors from team (Autobots): "
             for (_t in resultteamA) {
                 retString = retString + _t.name + ", "
             }
@@ -167,9 +163,8 @@ class TransformerViewModel(val transformerRepo: TransformerRepo): ViewModel() {
             for (i in battleTimes..teamA.size-1) {
                 retString = retString + teamA[i].name + ", "
             }
-            retString.trimMargin(", ")
         }
-        return retString
+        return retString.trim({ ch -> ch == ',' || ch == ' '})
     }
 
     fun insertSort(team: MutableList<Transformer>, t: Transformer){
